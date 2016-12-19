@@ -96,8 +96,7 @@ public class MovieSearchActivity extends AppCompatActivity {
         @Override
         public MovieHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            MovieHolder bh = new MovieHolder(inflater.inflate(R.layout.rv_movie_element, parent, false));
-            return bh;
+            return new MovieHolder(inflater.inflate(R.layout.rv_movie_element, parent, false));
         }
 
         @Override
@@ -170,7 +169,6 @@ public class MovieSearchActivity extends AppCompatActivity {
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.search_menu, menu);
         return true;
     }
