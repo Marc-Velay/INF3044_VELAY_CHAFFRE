@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.esiea.inf3044_chaffre_velay.inf3044_chaffre_velay">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".MovieSearchActivity" />
-        <activity android:name=".SearchHistory"></activity>
+        <activity android:name=".SearchHistory" />
+
+        <service
+            android:name=".MovieSearch"
+            android:exported="false"></service>
     </application>
 
 </manifest>

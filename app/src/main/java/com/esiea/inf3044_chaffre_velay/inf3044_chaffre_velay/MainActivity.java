@@ -7,16 +7,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.database.sqlite.*;
 //import android.database.*;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText movieNameField;
+    public static final String MOVIE_SEARCH = "com.esiea.inf3044_chaffre_velay.inf3044_chaffre_velay";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         String query = "select sqlite_version() AS sqlite_version";
         SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(":memory:", null);
         Cursor cursor = db.rawQuery(query, null);
@@ -25,13 +30,18 @@ public class MainActivity extends AppCompatActivity {
             sqliteVersion = cursor.getString(0);
         }
         Toast.makeText(getApplicationContext(), "SQLite version: "+sqliteVersion, Toast.LENGTH_SHORT).show();
+
     }
 
     public void movieSearch(View v) {
         Intent intent = new Intent(this, MovieSearchActivity.class);
+
         Bundle b = new Bundle();
-        b.putString("searchString", "test"); //Your id
+        movieNameField = (EditText)findViewById(R.id.movieName);
+        String name = movieNameField.getText().toString();
+        b.putString("searchString", name); //Your id
         intent.putExtras(b); //Put your id to your next Intent
+
         startActivity(intent);
         finish();
     }

@@ -10,4 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.esiea.inf3044_chaffre_velay.inf3044_chaffre_velay.SearchHistory">
 
+
+
 </RelativeLayout>

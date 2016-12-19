@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="@string/movie_input_suggest"
+            android:hint="@string/movie_input_suggest"
             android:ems="10"
             android:id="@+id/movieName" />
 
