@@ -11,7 +11,14 @@
     tools:context="com.esiea.inf3044_chaffre_velay.inf3044_chaffre_velay.MovieSearchActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/rv_movieResult"/>
+
+    <Button
+        android:text="@string/IMDBLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/IMDBLink"
+        android:onClick="visitIMDB" />
 </RelativeLayout>

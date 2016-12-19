@@ -7,5 +7,6 @@
     <string name="menuMain">Return home</string>
     <string name="notifTitle">You searched for a movie!</string>
     <string name="notifBody">Film: </string>
+    <string name="IMDBLink">Visit IMDB Today!</string>
     <string name="welcomeTxt">Welcome to Movie Search: \nYour movies, one click away! \nJust enter the movie title you are looking for and click search.</string>
 </resources>

@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -215,7 +216,10 @@ public class MovieSearchActivity extends AppCompatActivity {
         } else if (id == R.id.menu_main) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
+        } else if (id == R.id.easterEgg) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=Batman")));
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

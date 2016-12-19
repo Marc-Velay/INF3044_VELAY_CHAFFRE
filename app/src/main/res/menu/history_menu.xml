@@ -3,4 +3,7 @@
     <item
         android:title="@string/menuMain"
         android:id="@+id/menu_main"/>
+    <item
+    android:title="CLICK ME"
+    android:id="@+id/easterEgg"/>
 </menu>
