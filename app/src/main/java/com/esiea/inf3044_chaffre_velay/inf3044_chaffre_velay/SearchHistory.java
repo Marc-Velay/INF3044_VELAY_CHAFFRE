@@ -58,7 +58,6 @@ public class SearchHistory extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.d(TAG, intent.getAction());
-            Toast.makeText(getApplicationContext(), "Downloaded", Toast.LENGTH_SHORT).show();
             ba.setNewMovieH(getMOVIEFromFile());
         }
     }
