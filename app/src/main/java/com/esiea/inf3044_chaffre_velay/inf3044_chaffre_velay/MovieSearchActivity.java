@@ -21,6 +21,7 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -92,7 +93,11 @@ public class MovieSearchActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(MovieHolder holder, int position) {
             try {
-                holder.name.setText(movies.getJSONObject(position).get("Year").toString());
+                holder.name.setText(movies.getJSONObject(position).get("Title").toString());
+                holder.year.setText(movies.getJSONObject(position).get("Year").toString());
+                holder.runtime.setText(movies.getJSONObject(position).get("Runtime").toString());
+                holder.genre.setText(movies.getJSONObject(position).get("Genre").toString());
+                holder.plot.setText(movies.getJSONObject(position).get("Plot").toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -106,10 +111,19 @@ public class MovieSearchActivity extends AppCompatActivity {
 
         public class MovieHolder extends RecyclerView.ViewHolder {
             TextView name;
+            TextView year;
+            TextView runtime;
+            TextView genre;
+            TextView plot;
+
 
             public MovieHolder(View itemView) {
                 super(itemView);
                 name = (TextView)itemView.findViewById(R.id.rv_movie_element_name);
+                year = (TextView)itemView.findViewById(R.id.rv_movie_element_year);
+                runtime = (TextView)itemView.findViewById(R.id.rv_movie_element_runtime);
+                genre = (TextView)itemView.findViewById(R.id.rv_movie_element_genre);
+                plot = (TextView)itemView.findViewById(R.id.rv_movie_element_plot);
             }
         }
 
