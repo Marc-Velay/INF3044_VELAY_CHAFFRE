@@ -7,16 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f0a7253-f057-4ba7-a025-d72065fcfce5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/esiea/inf3044_chaffre_velay/inf3044_chaffre_velay/MovieSearchActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/esiea/inf3044_chaffre_velay/inf3044_chaffre_velay/MovieSearchActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/main_menu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/main_menu.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/search_menu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/search_menu.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-fr-rFR/strings_fr.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-fr-rFR/strings_fr.xml" />
     </list>
     <ignored path="INF3044_chaffre_velay.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -2352,7 +2343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1482143862311</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="corrected a spelling mistake and menus">
+      <created>1482144728464</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1482144728464</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2406,7 +2404,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="main page wireframe + second activity" />
-    <option name="LAST_COMMIT_MESSAGE" value="main page wireframe + second activity" />
+    <MESSAGE value="corrected a spelling mistake and menus" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrected a spelling mistake and menus" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
