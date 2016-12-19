@@ -6,5 +6,7 @@
     <string name="searchMovie">Rechercher</string>
     <string name="menuHistory">Consulter votre historique de recherche</string>
     <string name="menuMain">Retourner à la page d\\\'accueil</string>
+    <string name="notifTitle">Vous avez cherché un film!</string>
+    <string name="notifBody">Film: </string>
     <string name="welcomeTxt">Bienvenue sur Movie Search: \nVos films, à un click!\nSaisissez le nom de votre film et clickez sur rechercher!.</string>
 </resources>

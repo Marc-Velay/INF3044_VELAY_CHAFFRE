@@ -1,9 +1,11 @@
 package com.esiea.inf3044_chaffre_velay.inf3044_chaffre_velay;
 
 import android.app.IntentService;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.Context;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import java.io.File;
@@ -62,10 +64,6 @@ public class MovieSearch extends IntentService {
         }
     }
 
-    /**
-     * Handle action Foo in the provided background thread with the provided
-     * parameters.
-     */
     private void handleActionSearchMovie(String param1) {
         Log.d(TAG, "Thread service name: " + Thread.currentThread().getName());
         URL url;
