@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">INF3044_chaffre_velay</string>
+    <string name="app_name">INF3044_Chaffre_Velay</string>
+    <string name="search_history">Loading your history</string>
+    <string name="movie_input_suggest">Movie name</string>
+    <string name="searchMovie">Search</string>
+    <string name="menuHistory">View your search history</string>
+    <string name="menuMain">Return home</string>
+    <string name="welcomeTxt">Welcome to Movie Search: \nYour movies, one click away! \nJust enter the movie title you are looking for and click search.</string>
 </resources>

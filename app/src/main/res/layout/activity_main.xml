@@ -10,8 +10,33 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.esiea.inf3044_chaffre_velay.inf3044_chaffre_velay.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change something!" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcomeTxt"
+            android:textColor="@android:color/black"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:id="@+id/WelcomeText" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="@string/movie_input_suggest"
+            android:ems="10"
+            android:id="@+id/movieName" />
+
+        <Button
+            android:text="@string/searchMovie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchMovie"
+            android:onClick="movieSearch"/>
+    </LinearLayout>
 </RelativeLayout>

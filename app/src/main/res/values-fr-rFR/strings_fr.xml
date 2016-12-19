@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">INF3044_Chaffre_Velay</string>
+    <string name="search_history">Chargement de votre historique</string>
+    <string name="movie_input_suggest">Nom du film</string>
+    <string name="searchMovie">Rechercher</string>
+    <string name="menuHistory">Consulter votre historique de recherche</string>
+    <string name="menuMain">Retourner à la page d'accueil</string>
+    <string name="welcomeTxt">Bienvenue sur Movie Search: \nVos films, à un click!\nSaisissez le nom de votre film et clickez sur rechercher!.</string>
+</resources>
