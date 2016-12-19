@@ -46,13 +46,16 @@ public class MovieSearchActivity extends AppCompatActivity {
         intentFilter = new IntentFilter(MovieSearch.GET_MOVIE);
         LocalBroadcastManager.getInstance(this).registerReceiver(new MovieUpdate(), intentFilter);
 
+        String[] parts = value.split(" ");
+        for(int i = 0; i < parts.length; i++) {
+            if(i==0){
+                value = parts[i];
+            } else {
+                value+="+"+parts[i];
+            }
+        }
         MovieSearch.startActionSearchMovie(this, value);
-        /*Intent intent = new Intent(this, MovieSearch.class);
-        intent.setAction(MovieSearch.GET_MOVIE);
-        Bundle c = new Bundle();
-        c.putString("searchString", value);
-        intent.putExtras(c);
-        this.startService(intent);*/
+
 
         RecyclerView rv_movieResult = (RecyclerView)findViewById(R.id.rv_movieResult);
         rv_movieResult.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
