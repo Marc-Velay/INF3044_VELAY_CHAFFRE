@@ -21,7 +21,6 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -32,27 +31,38 @@ public class MovieSearchActivity extends AppCompatActivity {
     private static final String TAG = "Movie search ACTIVITY";
     IntentFilter intentFilter ;
     MovieAdapter ba;
+    private DBHelper dbh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_search);
 
+        dbh = new DBHelper(this);
 
         Bundle b = getIntent().getExtras();
-        String value = ""; // or other values
+        String value = "";
         if(b != null) value = b.getString("searchString");
         Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
 
         intentFilter = new IntentFilter(MovieSearch.GET_MOVIE);
         LocalBroadcastManager.getInstance(this).registerReceiver(new MovieUpdate(), intentFilter);
 
-        String[] parts = value.split(" ");
+        String[] parts = value.split("");
         for(int i = 0; i < parts.length; i++) {
             if(i==0){
                 value = parts[i];
             } else {
-                value+="+"+parts[i];
+                if(parts[i].equals(":")){
+                    value+="%3A";
+                } else if(parts[i].equals("%")) {
+                    value+="%25";
+                }  else if(parts[i].equals(" ")) {
+                    value+="+";
+                } else {
+                    value+=parts[i];
+                }
+
             }
         }
         MovieSearch.startActionSearchMovie(this, value);
@@ -93,13 +103,13 @@ public class MovieSearchActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(MovieHolder holder, int position) {
             try {
-                holder.name.setText("Title : " + movies.getJSONObject(position).get("Title").toString());
-                holder.year.setText("Year : " + movies.getJSONObject(position).get("Year").toString());
-                holder.runtime.setText("Runtime : " + movies.getJSONObject(position).get("Runtime").toString());
-                holder.genre.setText("Genre : " + movies.getJSONObject(position).get("Genre").toString());
-                holder.director.setText("Director : " + movies.getJSONObject(position).get("Director").toString());
-                holder.actors.setText("Actors : " + movies.getJSONObject(position).get("Actors").toString() + "\n");
-                holder.plot.setText("Plot : " + movies.getJSONObject(position).get("Plot").toString());
+                holder.name.setText(movies.getJSONObject(position).get("Title").toString());
+                holder.year.setText(movies.getJSONObject(position).get("Year").toString());
+                holder.runtime.setText(movies.getJSONObject(position).get("Runtime").toString());
+                holder.genre.setText(movies.getJSONObject(position).get("Genre").toString());
+                holder.plot.setText(movies.getJSONObject(position).get("Plot").toString());
+
+                dbh.insertMovie(movies.getJSONObject(position).get("Title").toString(), movies.getJSONObject(position).get("imdbID").toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -116,8 +126,6 @@ public class MovieSearchActivity extends AppCompatActivity {
             TextView year;
             TextView runtime;
             TextView genre;
-            TextView director;
-            TextView actors;
             TextView plot;
 
 
@@ -127,8 +135,6 @@ public class MovieSearchActivity extends AppCompatActivity {
                 year = (TextView)itemView.findViewById(R.id.rv_movie_element_year);
                 runtime = (TextView)itemView.findViewById(R.id.rv_movie_element_runtime);
                 genre = (TextView)itemView.findViewById(R.id.rv_movie_element_genre);
-                director = (TextView)itemView.findViewById(R.id.rv_movie_element_director);
-                actors = (TextView)itemView.findViewById(R.id.rv_movie_element_actors);
                 plot = (TextView)itemView.findViewById(R.id.rv_movie_element_plot);
             }
         }
@@ -152,7 +158,7 @@ public class MovieSearchActivity extends AppCompatActivity {
             JSONArray jsonArray = new JSONArray();
             jsonArray.put(jsonObject);
             Log.d(TAG, jsonArray.toString());
-            return jsonArray;//new JSONArray(new String(buf, "UTF-8"));
+            return jsonArray;
         } catch(IOException e) {
             e.printStackTrace();
             return new JSONArray();

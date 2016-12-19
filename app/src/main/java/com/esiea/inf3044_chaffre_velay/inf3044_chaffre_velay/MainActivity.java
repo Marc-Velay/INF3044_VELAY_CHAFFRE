@@ -22,14 +22,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String query = "select sqlite_version() AS sqlite_version";
-        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(":memory:", null);
-        Cursor cursor = db.rawQuery(query, null);
-        String sqliteVersion = "";
-        if (cursor.moveToNext()) {
-            sqliteVersion = cursor.getString(0);
-        }
-        Toast.makeText(getApplicationContext(), "SQLite version: "+sqliteVersion, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -39,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         Bundle b = new Bundle();
         movieNameField = (EditText)findViewById(R.id.movieName);
         String name = movieNameField.getText().toString();
-        b.putString("searchString", name); //Your id
-        intent.putExtras(b); //Put your id to your next Intent
+        b.putString("searchString", name);
+        intent.putExtras(b);
 
         startActivity(intent);
         finish();

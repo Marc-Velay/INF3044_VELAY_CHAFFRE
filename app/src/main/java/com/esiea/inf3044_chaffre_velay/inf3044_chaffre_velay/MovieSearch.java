@@ -12,8 +12,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 public class MovieSearch extends IntentService {
@@ -23,8 +26,12 @@ public class MovieSearch extends IntentService {
 
     private static final String EXTRA_PARAM1 = "com.esiea.inf3044_chaffre_velay.inf3044_chaffre_velay.extra.PARAM1";
 
+    private DBHelper dbh;
+
     public MovieSearch() {
         super("MovieSearch");
+        dbh = new DBHelper(this);
+
     }
 
 
@@ -63,6 +70,7 @@ public class MovieSearch extends IntentService {
         Log.d(TAG, "Thread service name: " + Thread.currentThread().getName());
         URL url;
         String tmpURL = "http://www.omdbapi.com/?t="+param1+"&y=&plot=full&r=json";
+        Log.d(TAG, tmpURL);
         try {
             url = new URL(tmpURL);
             HttpURLConnection conn = (HttpURLConnection)url.openConnection();
@@ -77,20 +85,44 @@ public class MovieSearch extends IntentService {
                 Log.e(TAG, "CONNECTION ERROR" + conn.getResponseCode());
             }
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * Handle action Baz in the provided background thread with the provided
-     * parameters.
-     */
     private void handleActionHistory() {
-        // TODO: Handle action Baz
-        throw new UnsupportedOperationException("Not yet implemented");
+
+        List<String> movieList = dbh.getAllMovies();
+        Set<String> hs = new HashSet<>();
+        hs.addAll(movieList);
+        movieList.clear();
+        movieList.addAll(hs);
+        Log.d(TAG, movieList.toString());
+
+    for(String movie : movieList) {
+        Log.d(TAG, "movie: " + movie);
+            Log.d(TAG, "Thread service name: " + Thread.currentThread().getName());
+            URL url;
+            String tmpURL = "http://www.omdbapi.com/?i="+movie+"&plot=full&r=json";
+            Log.d(TAG, tmpURL);
+            try {
+                url = new URL(tmpURL);
+                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                conn.setRequestMethod("GET");
+                conn.connect();
+
+                if(HttpURLConnection.HTTP_OK == conn.getResponseCode()){
+                    copyInputStreamToFile(conn.getInputStream(), new File(getCacheDir(), "movies.json"));
+                    Log.d(TAG, "successful query");
+                    LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(GET_HISTORY));
+                } else {
+                    Log.e(TAG, "CONNECTION ERROR" + conn.getResponseCode());
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
