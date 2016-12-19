@@ -38,5 +38,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/searchMovie"
             android:onClick="movieSearch"/>
+
     </LinearLayout>
+
+
+
+
 </RelativeLayout>
