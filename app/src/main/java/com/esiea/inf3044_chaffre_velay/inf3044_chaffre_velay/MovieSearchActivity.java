@@ -93,11 +93,13 @@ public class MovieSearchActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(MovieHolder holder, int position) {
             try {
-                holder.name.setText(movies.getJSONObject(position).get("Title").toString());
-                holder.year.setText(movies.getJSONObject(position).get("Year").toString());
-                holder.runtime.setText(movies.getJSONObject(position).get("Runtime").toString());
-                holder.genre.setText(movies.getJSONObject(position).get("Genre").toString());
-                holder.plot.setText(movies.getJSONObject(position).get("Plot").toString());
+                holder.name.setText("Title : " + movies.getJSONObject(position).get("Title").toString());
+                holder.year.setText("Year : " + movies.getJSONObject(position).get("Year").toString());
+                holder.runtime.setText("Runtime : " + movies.getJSONObject(position).get("Runtime").toString());
+                holder.genre.setText("Genre : " + movies.getJSONObject(position).get("Genre").toString());
+                holder.director.setText("Director : " + movies.getJSONObject(position).get("Director").toString());
+                holder.actors.setText("Actors : " + movies.getJSONObject(position).get("Actors").toString() + "\n");
+                holder.plot.setText("Plot : " + movies.getJSONObject(position).get("Plot").toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -114,6 +116,8 @@ public class MovieSearchActivity extends AppCompatActivity {
             TextView year;
             TextView runtime;
             TextView genre;
+            TextView director;
+            TextView actors;
             TextView plot;
 
 
@@ -123,6 +127,8 @@ public class MovieSearchActivity extends AppCompatActivity {
                 year = (TextView)itemView.findViewById(R.id.rv_movie_element_year);
                 runtime = (TextView)itemView.findViewById(R.id.rv_movie_element_runtime);
                 genre = (TextView)itemView.findViewById(R.id.rv_movie_element_genre);
+                director = (TextView)itemView.findViewById(R.id.rv_movie_element_director);
+                actors = (TextView)itemView.findViewById(R.id.rv_movie_element_actors);
                 plot = (TextView)itemView.findViewById(R.id.rv_movie_element_plot);
             }
         }
