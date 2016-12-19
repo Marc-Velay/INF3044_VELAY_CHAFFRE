@@ -1,5 +1,7 @@
 package com.esiea.inf3044_chaffre_velay.inf3044_chaffre_velay;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +9,7 @@ import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -32,6 +35,9 @@ public class MovieSearchActivity extends AppCompatActivity {
     IntentFilter intentFilter ;
     MovieAdapter ba;
     private DBHelper dbh;
+    NotificationManager notMan;
+    NotificationCompat.Builder builder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +46,24 @@ public class MovieSearchActivity extends AppCompatActivity {
 
         dbh = new DBHelper(this);
 
+        builder = new NotificationCompat.Builder(this);
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        Intent resultIntent = new Intent(this, MainActivity.class);
+
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        this,
+                        0,
+                        resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+        builder.setContentIntent(resultPendingIntent);
+        builder.setAutoCancel(true);
+        notMan = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+
         Bundle b = getIntent().getExtras();
         String value = "";
         if(b != null) value = b.getString("searchString");
-        Toast.makeText(getApplicationContext(), value, Toast.LENGTH_SHORT).show();
 
         intentFilter = new IntentFilter(MovieSearch.GET_MOVIE);
         LocalBroadcastManager.getInstance(this).registerReceiver(new MovieUpdate(), intentFilter);
@@ -80,7 +100,6 @@ public class MovieSearchActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.d(TAG, intent.getAction());
-            Toast.makeText(getApplicationContext(), "Downloaded", Toast.LENGTH_SHORT).show();
             ba.setNewMovie(getMOVIEFromFile());
         }
     }
@@ -109,6 +128,12 @@ public class MovieSearchActivity extends AppCompatActivity {
                 holder.plot.setText(movies.getJSONObject(position).get("Plot").toString());
 
                 dbh.insertMovie(movies.getJSONObject(position).get("Title").toString(), movies.getJSONObject(position).get("imdbID").toString());
+
+
+                builder.setContentText("Film: " + movies.getJSONObject(position).get("Title").toString());
+                builder.setContentTitle("You have searched for a movie:");
+
+                notMan.notify(500, builder.build());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
