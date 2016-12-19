@@ -31,6 +31,8 @@ public class MovieSearchActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.search_history) {
             Toast.makeText(getApplicationContext(), getString(R.string.search_history), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, SearchHistory.class));
+            finish();
         } else if (id == R.id.menu_main) {
             startActivity(new Intent(this, MainActivity.class));
             finish();

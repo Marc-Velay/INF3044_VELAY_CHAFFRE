@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MovieSearchActivity"></activity>
+        <activity android:name=".MovieSearchActivity" />
+        <activity android:name=".SearchHistory"></activity>
     </application>
 
 </manifest>
